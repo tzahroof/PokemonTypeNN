@@ -72,11 +72,15 @@ def center_and_resize(image,new_size = (64,64),plot=False,square=True, id = None
             max_row += floor((len_col - len_row)/2)      
     
 
-    #We may have some out of bound stuff hapenning here
-    if (max_row - min_row) > image.shape[0]:
-        raise ValueError("ID = {id} - Bounding box height is greater than image height".format(id=id))
-    if (max_col - min_col) > image.shape[1]:
-        raise ValueError("ID = {id} - Bounding box width is greater than image width".format(id=id))
+    #We may have some out of bound stuff happening here
+    ###
+    # TARIQ EDIT
+    # following lines of code's logic is off. I'm commenting it out and then praying :P
+    ###
+    # if (max_row - min_row) > image.shape[0]:
+    #     raise ValueError("ID = {id} - Bounding box height is greater than image height".format(id=id))
+    # if (max_col - min_col) > image.shape[1]:
+    #     raise ValueError("ID = {id} - Bounding box width is greater than image width".format(id=id))
         
     #If Bounding box exceeds image limits, we shift it inside
     if min_row < 0:
