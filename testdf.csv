@@ -1,0 +1,11 @@
+pokemon,dex_number,normal,fighting,flying,poison,ground,rock,bug,ghost,steel,fire,water,grass,electric,psychic,ice,dragon,dark,fairy
+bulbasaur,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+ivysaur,2,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+venusaur,3,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+venusaurmega,3,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+charmander,4,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+charmeleon,5,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+charizard,6,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+charizardmegax,6,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0
+charizardmegay,6,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+squirtle,7,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0

@@ -6,11 +6,19 @@ from math import ceil, floor
 
 from functools import reduce
 
+from PIL import Image
+
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 import os
+
+def pure_pil_alpha_to_color(image, color=(255, 255, 255)):
+    image.load()
+    background = Image.new("RGB", image.size, color)
+    background.paste(image, mask=image.split()[3]) # 3 is the alpha channel
+    return background
 
 def bbox_reducer(a,b):
     """Reduces two bounding boxes tuples to a bounding box
