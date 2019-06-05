@@ -1,0 +1,13 @@
+pokemon,dex_number,normal,fighting,flying,poison,ground,rock,bug,ghost,steel,fire,water,grass,electric,psychic,ice,dragon,dark,fairy
+rowlet.png,722,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+litten.png,725,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0
+araquanid.png,752,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0
+steenee.png,762,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+wimpod.png,767,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+typenull.png,772,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0
+silvallybug.png,773,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+silvallygrass.png,773,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+silvallypoison.png,773,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+cosmog.png,789,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1
+guzzlord.png,799,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0
+zeraora.png,807,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
