@@ -164,33 +164,40 @@ def getMetrics(true_pos, false_pos, false_neg, actual_dist):
     accuracy  = (true_pos) / actual_dist
     accuracy  = np.round(accuracy, decimals=2)
 
-    nprec = len(classes)
-    nrec = len(classes)
-    nf1 = len(classes)
 
-    mean_Precision = 0
-    mean_Recall = 0
-    mean_F1 = 0
+    mean_Precision = np.sum(true_pos)/(np.sum(true_pos) + np.sum(false_pos))
+    mean_Recall    = np.sum(true_pos)/(np.sum(true_pos) + np.sum(false_pos))
+    mean_F1 = 2 * mean_Precision * mean_Recall / (mean_Precision + mean_Recall)
 
-    for t in range(0, len(classes)):
-        if(not np.isnan(precision[t])):
-            mean_Precision += precision[t]
-        else:
-            nprec -= 1
+    ## UNCOMMENT FOR averaged mean stats based on classes (each class equally weighted, 
+    ## regardless of number of examples)
+    # nprec = len(classes)
+    # nrec = len(classes)
+    # nf1 = len(classes)
+
+    # mean_Precision = 0
+    # mean_Recall = 0
+    # mean_F1 = 0
+
+    # for t in range(0, len(classes)):
+    #     if(not np.isnan(precision[t])):
+    #         mean_Precision += precision[t]
+    #     else:
+    #         nprec -= 1
         
-        if(not np.isnan(recall[t])):
-            mean_Recall += recall[t]
-        else:
-            nrec -= 1
+    #     if(not np.isnan(recall[t])):
+    #         mean_Recall += recall[t]
+    #     else:
+    #         nrec -= 1
             
-        if(not np.isnan(F1[t])):
-            mean_F1 += F1[t]
-        else:
-            nf1 -= 1
+    #     if(not np.isnan(F1[t])):
+    #         mean_F1 += F1[t]
+    #     else:
+    #         nf1 -= 1
             
-    mean_Precision /= nprec
-    mean_Recall    /= nrec
-    mean_F1        /= nf1
+    # mean_Precision /= nprec
+    # mean_Recall    /= nrec
+    # mean_F1        /= nf1
 
     mean_accuracy = np.sum(true_pos)/np.sum(actual_dist)
 
