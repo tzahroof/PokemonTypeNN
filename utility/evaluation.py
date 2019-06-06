@@ -81,7 +81,73 @@ def plot_evaluation(label,metric1_label, metric1, metric2_label, metric2, title_
         #Recall
         if metric[metric2_label] is not None:
             ax.annotate("{:.0%}".format(metric[metric2_label]), (left+0.40, top+1/20), color='#000000', 
-                        fontsize=14, ha='center', va='center') 
+                        fontsize=14, ha='center', va='center')
+
+
+def getTopXTruePos(output_vector, actual, top_number):
+    if top_number > len(actual):
+        raise ValueError("top_number is greater than the array size")
+    elif top_number <= 0:
+        raise ValueError("top_number is less than or equal to 0")
+    elif output_vector.shape != actual.shape:
+        raise ValueError("Input arrays are not of the same shape")
+    #Get the indexes of highest classes
+    #Highest element first
+    #Only keep the top number
+    predlist = np.argsort(-output_vector)[:top_number]
+
+    #Bothlist is the correct classes identified (indices)
+    actuallist = np.where(actual == 1)[0]
+    bothlist = np.intersect1d(predlist, actuallist)
+
+    true_pos = np.zeros(18)
+    true_pos[bothlist] = 1
+    return true_pos
+
+def getUnderlyingDist(output_vector, actual, threshold):
+
+    if(output_vector.shape != actual.shape):
+        raise ValueError("Input arrays are not of the same shape")
+
+    true_pos  = np.zeros(18)
+    false_pos = np.zeros(18)
+    false_neg = np.zeros(18)
+    prediction= np.zeros(18)
+
+    #Keep the first two numbers
+    output_idces = np.argsort(-output_vector)[:2]
+
+    #Keep the prediction classes where the class prediction >= 0.5
+    predlist = output_idces[np.where(output_vector[output_idces] >= threshold)[0]]
+
+    #If none are greater than 0.5, take the max prediction
+    if(len(predlist) == 0):
+        predlist = output_idces[0:1]
+
+    #What we guessed
+    prediction[predlist] = 1
+    
+    #indices which label the actual type
+    actuallist = np.where(actual == 1)[0]
+
+    #Correctly identified classes (union between prediction and actual list)
+    bothlist = np.intersect1d(predlist, actuallist)
+
+    true_pos[bothlist] = 1
+
+    #False Positives (in prediction, but not in the union of the two)
+    falseposlist = np.setdiff1d(predlist, bothlist)
+    false_pos[falseposlist] = 1
+
+    #False Negatives (in actual, but not in the union of the two)
+    falseneglist = np.setdiff1d(actuallist, bothlist)
+    false_neg[falseneglist] = 1
+
+
+    return {"true_pos":true_pos,
+            "false_pos":false_pos,
+            "false_neg":false_neg,
+            "prediction":prediction}
 
 
 def getMetrics(true_pos, false_pos, false_neg, actual_dist):
