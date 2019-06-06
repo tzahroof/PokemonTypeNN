@@ -167,7 +167,7 @@ def getMetrics(true_pos, false_pos, false_neg, actual_dist):
 
 
     mean_Precision = np.sum(true_pos)/(np.sum(true_pos) + np.sum(false_pos))
-    mean_Recall    = np.sum(true_pos)/(np.sum(true_pos) + np.sum(false_pos))
+    mean_Recall    = np.sum(true_pos)/(np.sum(true_pos) + np.sum(false_neg))
     mean_F1 = 2 * mean_Precision * mean_Recall / (mean_Precision + mean_Recall)
 
     ## UNCOMMENT FOR averaged mean stats based on classes (each class equally weighted, 
