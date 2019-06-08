@@ -109,6 +109,7 @@ def getUnderlyingDist(output_vector, actual, threshold):
     if(output_vector.shape != actual.shape):
         raise ValueError("Input arrays are not of the same shape")
 
+    true_neg  = np.zeros(18)
     true_pos  = np.zeros(18)
     false_pos = np.zeros(18)
     false_neg = np.zeros(18)
@@ -143,8 +144,15 @@ def getUnderlyingDist(output_vector, actual, threshold):
     falseneglist = np.setdiff1d(actuallist, bothlist)
     false_neg[falseneglist] = 1
 
+    #The Following is for false negatives
+    negpredlist = np.setdiff1d(range(0,18) , predlist)
+    actualneglist = np.where(actual == 0)[0]
+    bothneglist = np.intersect1d(negpredlist, actualneglist)
+    true_neg[bothneglist] = 1
+
 
     return {"true_pos":true_pos,
+            "true_neg":true_neg,
             "false_pos":false_pos,
             "false_neg":false_neg,
             "prediction":prediction}
